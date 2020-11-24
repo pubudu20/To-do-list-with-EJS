@@ -8,11 +8,11 @@ html {
 
 h1 {
   color: #fff;
-  padding: 10px;
+  padding: 30px;
 }
 
 .box {
-  max-width: 400px;
+  max-width: 500px;
   margin: 50px auto;
   background: white;
   border-radius: 5px;
@@ -47,7 +47,7 @@ input[type="checkbox"] {
 
 p {
   margin: 0;
-  padding: 20px;
+  padding: 30px;
   font-size: 20px;
   font-weight: 200;
   color: #00204a;

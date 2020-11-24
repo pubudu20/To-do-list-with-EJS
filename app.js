@@ -4,6 +4,7 @@ const bodyParser = require ("body-parser");
 const app = express();
 
 var items = ["Buy food","Cook food", "Eat food"];
+var workItems = [];
 
 app.set('view engine', 'ejs');
 
@@ -20,18 +21,31 @@ app.get("/", function(req,res){
   };
   var day = today.toLocaleDateString("en-US",options);
 
-  res.render("list", {kindOfDay:day, newListItems: items});
+  res.render("list", {listTitle:day, newListItems: items});
 });
 
 app.post("/", function(req,res){
-  var item = req.body.newItem;
+  let item = req.body.newItem;
+  console.log(req.body);
+  if(req.body.list === "work"){
+    workItems.push(item);
+    res.redirect("/work");
+  }
+  else{
   items.push(item);
   res.redirect("/");
+  }
+// }
+
+});
+
+app.get("/work", function(req,res){
+  res.render("list",{listTitle: "work List", newListItems:workItems});
+});
+
+app.get("/about", function(req,res){
+  res.render("about");
 })
-
-
-
-
 
 
 app.listen(3000,function(){
